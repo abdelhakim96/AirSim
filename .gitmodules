@@ -1,0 +1,6 @@
+[submodule "my_code"]
+	path = my_code
+	url = git@github.com:abdelhakim96/AirSim_code.git
+[submodule "video_ray_rov"]
+	path = video_ray_rov
+	url = git@github.com:abdelhakim96/video_ray_rov_mpc.git
