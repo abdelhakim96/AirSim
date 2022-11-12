@@ -274,6 +274,8 @@ namespace airlib
 
             Wrench wrench = Wrench::zero();
             const real_T air_density = body.getEnvironment().getState().air_density;
+            //const real_T air_density = 1000000;
+
 
             // Use relative velocity of the body wrt wind
             const Vector3r relative_vel = linear_vel - wind_world;

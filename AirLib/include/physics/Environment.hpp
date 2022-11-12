@@ -118,7 +118,8 @@ namespace airlib
             state.air_density = EarthUtils::getAirDensity(state.air_pressure, state.temperature);
 
             //TODO: avoid recalculating square roots
-            state.gravity = Vector3r(0, 0, EarthUtils::getGravity(state.geo_point.altitude));
+            //state.gravity = Vector3r(0, 0, EarthUtils::getGravity(state.geo_point.altitude));
+            state.gravity = Vector3r(0, 0, 5.0);
         }
 
     private:

@@ -113,31 +113,34 @@ namespace airlib
                                          real_T rotor_z /* z relative to center of gravity */)
         {
             Vector3r unit_z(0, 0, -1); //NED frame
+            Vector3r unit_x(1, 0, 0); //NED frame
+
             if (rotor_count == 4) {
                 rotor_poses.clear();
 
                 /* Note: rotor_poses are built in this order:
                  x-axis
-            (2)  |   (0)
-                 |
-            -------------- y-axis
-                 |
-            (1)  |   (3)
+            
+                     |
+          (0)  -----(2)-------(1) y-axis
+                    
             */
                 // vectors below are rotated according to NED left hand rule (so the vectors are rotated counter clockwise).
                 Quaternionr quadx_rot(AngleAxisr(M_PIf / 4, unit_z));
-                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(0, arm_lengths[0], rotor_z), quadx_rot, true),
-                                         unit_z,
+                Quaternionr no_rot(AngleAxisr(0, unit_z));
+
+                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(0, -0.1, 0.0), no_rot, true),
+                                         unit_x,
+                                         RotorTurningDirection::RotorTurningDirectionCW);
+                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(0, 0.1, 0.0), no_rot, true),
+                                         unit_x,
                                          RotorTurningDirection::RotorTurningDirectionCCW);
-                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(0, -arm_lengths[1], rotor_z), quadx_rot, true),
-                                         unit_z,
-                                         RotorTurningDirection::RotorTurningDirectionCCW);
-                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(arm_lengths[2], 0, rotor_z), quadx_rot, true),
+                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(0, 0, 0.0), no_rot, true),
                                          unit_z,
                                          RotorTurningDirection::RotorTurningDirectionCW);
-                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(-arm_lengths[3], 0, rotor_z), quadx_rot, true),
+                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(0, 0, 0.0), no_rot, true),
                                          unit_z,
-                                         RotorTurningDirection::RotorTurningDirectionCW);
+                                         RotorTurningDirection::RotorTurningDirectionCCW);
             }
             else
                 throw std::invalid_argument("Rotor count other than 4 is not supported by this method!");
@@ -320,7 +323,7 @@ namespace airlib
             //any value above the maximum would result in the motors not being able to lift the body even at max thrust,
             //and any value below the minimum would cause the drone to fly upwards on idling throttle (50% of the max throttle if using SimpleFlight)
             //Note that the default idle throttle percentage is 50% if you are using SimpleFlight
-            params.mass = 1.0f;
+            params.mass = 0.5f;
 
             real_T motor_assembly_weight = 0.055f; //weight for MT2212 motor for F450 frame
             real_T box_mass = params.mass - params.rotor_count * motor_assembly_weight;
@@ -353,7 +356,7 @@ namespace airlib
             //this has to be between max_thrust*rotor_count/10 (2.5kg using default parameters in RotorParams.hpp) and (idle throttle percentage)*max_thrust*rotor_count/10 (1.25kg using default parameters and SimpleFlight)
             //any value above the maximum would result in the motors not being able to lift the body even at max thrust,
             //and any value below the minimum would cause the drone to fly upwards on idling throttle (50% of the max throttle if using SimpleFlight)
-            params.mass = 1.0f;
+            params.mass = 0.3f;
 
             real_T motor_assembly_weight = 0.055f; //weight for MT2212 motor for F450 frame
             real_T box_mass = params.mass - params.rotor_count * motor_assembly_weight;
