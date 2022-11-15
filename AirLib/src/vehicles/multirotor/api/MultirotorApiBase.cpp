@@ -129,7 +129,8 @@ namespace airlib
             .isTimeout();
     }
 
-    bool MultirotorApiBase::moveByMotorPWMs(float front_right_pwm, float rear_left_pwm, float front_left_pwm, float rear_right_pwm, float duration)
+    bool MultirotorApiBase::moveByMotorPWMs(float vert_front_right, float vert_rear_left, float vert_front_left, float vert_rear_right,
+                                            float horiz_front_right, float horiz_rear_left, float horiz_front_left, float horiz_rear_right, float duration)
     {
         SingleTaskCall lock(this);
 
@@ -137,7 +138,8 @@ namespace airlib
             return true;
 
         return waitForFunction([&]() {
-                   commandMotorPWMs(front_right_pwm, rear_left_pwm, front_left_pwm, rear_right_pwm);
+                   commandMotorPWMs(vert_front_right, vert_rear_left, vert_front_left, vert_rear_right, 
+                   horiz_front_right, horiz_rear_left, horiz_front_left, horiz_rear_right);
                    return false; //keep moving until timeout
                },
                                duration)

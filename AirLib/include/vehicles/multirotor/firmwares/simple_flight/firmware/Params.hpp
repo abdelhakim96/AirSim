@@ -18,7 +18,7 @@ public:
     //simulation board should respect possible values
     struct Motor
     {
-        uint16_t motor_count = 4;
+        uint16_t motor_count = 8;
         float min_motor_output = 0;
         float max_motor_output = 1;
         //if min_armed_output too low then noise in pitch/roll can destabilize quad copter when throttle is zero

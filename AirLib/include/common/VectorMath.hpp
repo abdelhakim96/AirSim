@@ -28,6 +28,7 @@ namespace airlib
         typedef Eigen::Matrix<float, 1, 1> Vector1f;
         typedef Eigen::Matrix<double, 1, 1> Vector1d;
         typedef Eigen::Matrix<float, 2, 1, Eigen::DontAlign> Vector2f;
+        typedef Eigen::Matrix<float, 8, 1, Eigen::DontAlign> Vector8f; //define 8D vector
         typedef Eigen::Matrix<double, 4, 1, Eigen::DontAlign> Vector2d;
         typedef Eigen::Vector3f Vector3f;
         typedef Eigen::Vector3d Vector3d;

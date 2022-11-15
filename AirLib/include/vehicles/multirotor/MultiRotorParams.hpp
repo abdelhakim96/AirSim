@@ -114,33 +114,54 @@ namespace airlib
         {
             Vector3r unit_z(0, 0, -1); //NED frame
             Vector3r unit_x(1, 0, 0); //NED frame
-
-            if (rotor_count == 4) {
+            Vector3r unit_x1(0.70711,0.70711,0); //NED frame
+            Vector3r unit_x2(-0.70711,-0.70711,0); //NED frame
+            Vector3r unit_x3(0.70711,-0.70711,0); //NED frame
+            Vector3r unit_x4(-0.70711,0.70711,0); //NED frame
+            float z_off = 0.03;
+            if (rotor_count == 8) {
                 rotor_poses.clear();
 
                 /* Note: rotor_poses are built in this order:
+                Top View 
+
+      /* Note: rotor_poses are built in this order:
                  x-axis
-            
-                     |
-          (0)  -----(2)-------(1) y-axis
-                    
+            (2)  |   (0) 
+                 |
+            -------------- y-axis
+                 |
+            (1)  |   (3)
             */
+   
                 // vectors below are rotated according to NED left hand rule (so the vectors are rotated counter clockwise).
                 Quaternionr quadx_rot(AngleAxisr(M_PIf / 4, unit_z));
                 Quaternionr no_rot(AngleAxisr(0, unit_z));
 
-                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(0, -0.1, 0.0), no_rot, true),
-                                         unit_x,
-                                         RotorTurningDirection::RotorTurningDirectionCW);
-                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(0, 0.1, 0.0), no_rot, true),
-                                         unit_x,
-                                         RotorTurningDirection::RotorTurningDirectionCCW);
-                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(0, 0, 0.0), no_rot, true),
-                                         unit_z,
-                                         RotorTurningDirection::RotorTurningDirectionCW);
-                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(0, 0, 0.0), no_rot, true),
+                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(0, arm_lengths[0], z_off), quadx_rot, true),
                                          unit_z,
                                          RotorTurningDirection::RotorTurningDirectionCCW);
+                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(0, -arm_lengths[1], z_off), quadx_rot, true),
+                                         unit_z,
+                                         RotorTurningDirection::RotorTurningDirectionCCW);
+                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(arm_lengths[2], 0, z_off), quadx_rot, true),
+                                         unit_z,
+                                         RotorTurningDirection::RotorTurningDirectionCW);
+                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(-arm_lengths[3], 0, z_off), quadx_rot, true),
+                                         unit_z,
+                                         RotorTurningDirection::RotorTurningDirectionCW);
+                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(0, arm_lengths[0], -z_off), quadx_rot, true),
+                                         unit_x1,
+                                         RotorTurningDirection::RotorTurningDirectionCCW);
+                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(0, -arm_lengths[1], -z_off), quadx_rot, true),
+                                         unit_x2,
+                                         RotorTurningDirection::RotorTurningDirectionCCW);
+                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(arm_lengths[2], 0,  -z_off), quadx_rot, true),
+                                         unit_x3,
+                                         RotorTurningDirection::RotorTurningDirectionCW);
+                rotor_poses.emplace_back(VectorMath::rotateVector(Vector3r(-arm_lengths[3], 0, -z_off), quadx_rot, true),
+                                         unit_x4,
+                                         RotorTurningDirection::RotorTurningDirectionCW);                                  
             }
             else
                 throw std::invalid_argument("Rotor count other than 4 is not supported by this method!");
@@ -315,7 +336,7 @@ namespace airlib
         {
             //set up arm lengths
             //dimensions are for F450 frame: http://artofcircuits.com/product/quadcopter-frame-hj450-with-power-distribution
-            params.rotor_count = 4;
+            params.rotor_count = 8;
             std::vector<real_T> arm_lengths(params.rotor_count, 0.2275f);
 
             //set up mass

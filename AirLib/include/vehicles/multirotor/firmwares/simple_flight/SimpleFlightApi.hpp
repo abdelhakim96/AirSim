@@ -197,15 +197,16 @@ namespace airlib
             return 0.5f; //measured in simulator by firing commands "MoveToLocation -x 0 -y 0" multiple times and looking at distance traveled
         }
 
-        virtual void commandMotorPWMs(float front_right_pwm, float rear_left_pwm, float front_left_pwm, float rear_right_pwm) override
+        virtual void commandMotorPWMs(float vert_front_right, float vert_rear_left, float vert_front_left, float vert_rear_right, 
+                                      float horiz_front_right, float horiz_rear_left, float horiz_front_left, float horiz_rear_right) override
         {
             //Utils::log(Utils::stringf("commandMotorPWMs %f, %f, %f, %f", front_right_pwm, rear_left_pwm, front_left_pwm, rear_right_pwm));
 
             typedef simple_flight::GoalModeType GoalModeType;
             simple_flight::GoalMode mode(GoalModeType::Passthrough, GoalModeType::Passthrough, GoalModeType::Passthrough, GoalModeType::Passthrough);
-
-            simple_flight::Axis4r goal(front_right_pwm, rear_left_pwm, front_left_pwm, rear_right_pwm);
-
+ 
+            //simple_flight::Axis4r goal(float vert_front_right, float vert_rear_left, float vert_front_left, float vert_rear_right, float horiz_front_right, float horiz_rear_left, float horiz_front_left, float horiz_rear_right);
+            simple_flight::Axis4r goal(vert_front_right, vert_rear_left, vert_front_left, vert_rear_right);
             std::string message;
             firmware_->offboardApi().setGoalAndMode(&goal, &mode, message);
         }

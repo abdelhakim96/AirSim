@@ -25,7 +25,7 @@ namespace airlib
 
     protected: //must be implemented
         /************************* low level move APIs *********************************/
-        virtual void commandMotorPWMs(float front_right_pwm, float rear_left_pwm, float front_left_pwm, float rear_right_pwm) = 0;
+        virtual void commandMotorPWMs(float vert_front_right, float vert_rear_left, float vert_front_left, float vert_rear_right, float horiz_front_right, float horiz_rear_left, float horiz_front_left, float horiz_rear_right) = 0;
         virtual void commandRollPitchYawrateThrottle(float roll, float pitch, float yaw_rate, float throttle) = 0;
         virtual void commandRollPitchYawZ(float roll, float pitch, float yaw, float z) = 0;
         virtual void commandRollPitchYawThrottle(float roll, float pitch, float yaw, float throttle) = 0;
@@ -93,7 +93,7 @@ namespace airlib
                                const YawMode& yaw_mode, float lookahead, float adaptive_lookahead);
         virtual bool moveByVelocityBodyFrame(float vx, float vy, float vz, float duration, DrivetrainType drivetrain, const YawMode& yaw_mode);
         virtual bool moveByVelocityZBodyFrame(float vx, float vy, float z, float duration, DrivetrainType drivetrain, const YawMode& yaw_mode);
-        virtual bool moveByMotorPWMs(float front_right_pwm, float rear_left_pwm, float front_left_pwm, float rear_right_pwm, float duration);
+        virtual bool moveByMotorPWMs(float vert_front_right, float vert_rear_left, float vert_front_left, float vert_rear_right, float horiz_front_right, float horiz_rear_left, float horiz_front_left, float horiz_rear_right, float duration);
         virtual bool moveByRollPitchYawZ(float roll, float pitch, float yaw, float z, float duration);
         virtual bool moveByRollPitchYawThrottle(float roll, float pitch, float yaw, float throttle, float duration);
         virtual bool moveByRollPitchYawrateThrottle(float roll, float pitch, float yaw_rate, float throttle, float duration);

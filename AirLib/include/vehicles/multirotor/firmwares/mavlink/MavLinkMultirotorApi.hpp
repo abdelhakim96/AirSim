@@ -746,12 +746,17 @@ namespace airlib
             Utils::log("Not Implemented: setControllerGains", Utils::kLogLevelInfo);
         }
 
-        virtual void commandMotorPWMs(float front_right_pwm, float front_left_pwm, float rear_right_pwm, float rear_left_pwm) override
+        virtual void commandMotorPWMs(float vert_front_right, float vert_rear_left, float vert_front_left, float vert_rear_right, float horiz_front_right, 
+                                                      float horiz_rear_left, float horiz_front_left, float horiz_rear_right) override
         {
-            unused(front_right_pwm);
-            unused(front_left_pwm);
-            unused(rear_right_pwm);
-            unused(rear_left_pwm);
+            unused(vert_front_right);
+            unused(vert_front_left);
+            unused(vert_rear_right);
+            unused(vert_rear_left);
+            unused(horiz_front_right);
+            unused(horiz_front_left);
+            unused(horiz_rear_right);
+            unused(horiz_rear_left);
             Utils::log("Not Implemented: commandMotorPWMs", Utils::kLogLevelInfo);
         }
 

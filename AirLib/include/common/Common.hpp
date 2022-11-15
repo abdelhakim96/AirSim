@@ -36,6 +36,7 @@ namespace airlib
     typedef VectorMath::Vector3f Vector3r;
     typedef VectorMath::Vector2f Vector2r;
     typedef VectorMath::Vector1f Vector1r;
+    typedef VectorMath::Vector8f Vector8r;
     typedef VectorMath::Array3f Array3r;
     typedef VectorMath::Pose Pose;
     typedef VectorMath::Quaternionf Quaternionr;

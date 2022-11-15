@@ -25,6 +25,7 @@ namespace airlib
             return conv;
         }
 
+
         static Vector3r toVector3r(const simple_flight::Axis3r& vec)
         {
             Vector3r conv;
@@ -33,6 +34,10 @@ namespace airlib
             conv.z() = vec.z();
             return conv;
         }
+
+
+
+
 
         static Kinematics::State toKinematicsState3r(const simple_flight::KinematicsState& state)
         {

@@ -91,9 +91,11 @@ __pragma(warning(disable : 4239))
             return this;
         }
 
-        MultirotorRpcLibClient* MultirotorRpcLibClient::moveByMotorPWMsAsync(float front_right_pwm, float rear_left_pwm, float front_left_pwm, float rear_right_pwm, float duration, const std::string& vehicle_name)
+        MultirotorRpcLibClient* MultirotorRpcLibClient::moveByMotorPWMsAsync(float vert_front_right, float vert_rear_left, float vert_front_left, float vert_rear_right,
+                                                                              float horiz_front_right, float horiz_rear_left, float horiz_front_left, float horiz_rear_right, float duration, const std::string& vehicle_name)
         {
-            pimpl_->last_future = static_cast<rpc::client*>(getClient())->async_call("moveByMotorPWMs", front_right_pwm, rear_left_pwm, front_left_pwm, rear_right_pwm, duration, vehicle_name);
+            pimpl_->last_future = static_cast<rpc::client*>(getClient())->async_call("moveByMotorPWMs", vert_front_right, vert_rear_left, vert_front_left, vert_rear_right, horiz_front_right,  horiz_rear_left, 
+                                                                                       horiz_front_left, horiz_rear_right, duration, vehicle_name);
             return this;
         }
 

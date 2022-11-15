@@ -33,7 +33,8 @@ namespace airlib
                                                              DrivetrainType drivetrain = DrivetrainType::MaxDegreeOfFreedom, const YawMode& yaw_mode = YawMode(), const std::string& vehicle_name = "");
         MultirotorRpcLibClient* moveByVelocityZBodyFrameAsync(float vx, float vy, float z, float duration,
                                                               DrivetrainType drivetrain = DrivetrainType::MaxDegreeOfFreedom, const YawMode& yaw_mode = YawMode(), const std::string& vehicle_name = "");
-        MultirotorRpcLibClient* moveByMotorPWMsAsync(float front_right_pwm, float rear_left_pwm, float front_left_pwm, float rear_right_pwm, float duration, const std::string& vehicle_name = "");
+        MultirotorRpcLibClient* moveByMotorPWMsAsync(float vert_front_right, float vert_rear_left, float vert_front_left, float vert_rear_right, float horiz_front_right, 
+                                                      float horiz_rear_left, float horiz_front_left, float horiz_rear_right, float duration, const std::string& vehicle_name = "");
         MultirotorRpcLibClient* moveByRollPitchYawZAsync(float roll, float pitch, float yaw, float z, float duration, const std::string& vehicle_name = "");
         MultirotorRpcLibClient* moveByRollPitchYawThrottleAsync(float roll, float pitch, float yaw, float throttle, float duration, const std::string& vehicle_name = "");
         MultirotorRpcLibClient* moveByRollPitchYawrateThrottleAsync(float roll, float pitch, float yaw_rate, float throttle, float duration, const std::string& vehicle_name = "");
