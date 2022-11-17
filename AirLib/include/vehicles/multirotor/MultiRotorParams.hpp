@@ -125,7 +125,6 @@ namespace airlib
                 /* Note: rotor_poses are built in this order:
                 Top View 
 
-      /* Note: rotor_poses are built in this order:
                  x-axis
             (2)  |   (0) 
                  |

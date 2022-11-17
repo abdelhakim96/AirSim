@@ -81,6 +81,161 @@ private:
 };
 typedef Axis3<TReal> Axis3r;
 
+
+// new hakim
+
+
+template <typename T>
+class Axis8
+{
+public:
+    Axis8(const T& val1_val = T(), const T& val2_val = T(), const T& val3_val = T(),const T& val4_val = T(), const T& val5_val = T(), const T& val6_val = T()
+                   , const T& val7_val = T(), const T& val8_val = T())
+        : vals_{ val1_val, val2_val, val3_val, val4_val, val5_val, val6_val, val7_val, val8_val }
+    {
+    }
+
+    virtual ~Axis8() = default;
+
+    //access by index
+    virtual T& operator[](unsigned int index)
+    {
+        return vals_[index];
+    }
+
+    virtual const T& operator[](unsigned int index) const
+    {
+        return vals_[index];
+    }
+
+    virtual std::string toString() const
+    {
+        return std::to_string(static_cast<float>(vals_[0]))
+            .append(", ")
+            .append(std::to_string(static_cast<float>(vals_[1])))
+            .append(", ")
+            .append(std::to_string(static_cast<float>(vals_[2])));
+            .append(", ")
+            .append(std::to_string(static_cast<float>(vals_[3])));
+            .append(", ")
+            .append(std::to_string(static_cast<float>(vals_[4])));
+            .append(", ")
+            .append(std::to_string(static_cast<float>(vals_[5])));
+            .append(", ")
+            .append(std::to_string(static_cast<float>(vals_[6])));
+            .append(", ")
+            .append(std::to_string(static_cast<float>(vals_[7])));
+    }
+
+    bool equals8(const Axis8<T>& other) const
+    {
+        //return vals_[0] == other.vals_[0] && vals_[1] == other.vals_[1] && vals_[2] == other.vals_[2];
+        return (*this)[0] == other[0] && (*this)[1] == other[1] && (*this)[2] == other[2] && (*this)[3] == other[3]
+        && (*this)[4] == other[4] && (*this)[5] == other[5] && (*this)[6] == other[6] && (*this)[7] == other[7] ;
+    }
+
+    Axis4<T> colWiseMultiply8(const Axis8<T>& other) const
+    {
+        //return Axis4<T>(vals_[0] * other.vals_[0], vals_[1] * other.vals_[1], vals_[2] * other.vals_[2]);
+        return Axis4<T>((*this)[0] * other[0], (*this)[1] * other[1], (*this)[2] * other[2], (*this)[3] * other[3]
+                    , (*this)[4] * other[4], (*this)[5] * other[5],   (*this)[6] * other[6], (*this)[7] * other[7])  ;
+
+    }
+
+    //access as axis
+    const T& val1() const { return vals_[0]; }
+    const T& val2() const { return vals_[1]; }
+    const T& val3() const { return vals_[2]; }
+    const T& val4() const { return vals_[3]; }
+    const T& val5() const { return vals_[4]; }
+    const T& val6() const { return vals_[5]; }
+    const T& val7() const { return vals_[6]; }
+    const T& val8() const { return vals_[7]; }
+
+
+    T& val1() { return vals_[0]; }
+    T& val2() { return vals_[1]; }
+    T& val3() { return vals_[2]; }
+    T& val4() { return vals_[3]; }
+    T& val5() { return vals_[4]; }
+    T& val6() { return vals_[5]; }
+    T& val7() { return vals_[6]; }
+    T& val8() { return vals_[7]; }
+
+    //access as angles
+    const T& roll() const { return vals_[0]; }
+    const T& pitch() const { return vals_[1]; }
+    const T& yaw() const { return vals_[2]; }
+    T& roll() { return vals_[0]; }
+    T& pitch() { return vals_[1]; }
+    T& yaw() { return vals_[2]; }
+
+    static const Axis8<T>& zero()
+    {
+        static const Axis8<T> zero_val = Axis8<T>();
+        return zero_val;
+    }
+
+    static constexpr unsigned int AxisCount()
+    {
+        return 8;
+    }
+
+private:
+    T vals_[8];
+};
+typedef Axis8<TReal> Axis8r;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 template <typename T>
 class Axis4 : public Axis3<T>
 {
@@ -185,6 +340,7 @@ private:
     T val4_ = 0;
 };
 typedef Axis4<TReal> Axis4r;
+
 
 struct GeoPoint
 {
@@ -342,6 +498,25 @@ public:
         return mode;
     }
 };
+
+class GoalMode_1 : public Axis8<GoalModeType>
+{
+public:
+    GoalMode(GoalModeType val1_val = GoalModeType::Passthrough, GoalModeType val2_val = GoalModeType::Passthrough,
+             GoalModeType val3_val = GoalModeType::Passthrough, GoalModeType val4_val = GoalModeType::Passthrough,
+             GoalModeType val5_val = GoalModeType::Passthrough, GoalModeType val6_val = GoalModeType::Passthrough,
+             GoalModeType val6_val = GoalModeType::Passthrough, GoalModeType val7_val = GoalModeType::Passthrough, GoalModeType val8_val = GoalModeType::Passthrough)
+        : Axis8<GoalModeType>(val1_val, val2_val, val3_val, val4_val, val5_val, val6_val, val7_val, val8_val)
+    {
+    }
+};
+
+
+
+
+
+
+
 
 //config params for PID controller
 template <class T>

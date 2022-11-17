@@ -35,7 +35,35 @@ namespace airlib
             return conv;
         }
 
+        static simple_flight::Axis8r toAxis3r(const Vector8f& vec)
+        {
+            simple_flight::Axis8r conv;
+            conv.val1() = vec.val1();
+            conv.val2() = vec.val2();
+            conv.val3() = vec.val3();
+            conv.val4() = vec.val4();
+            conv.val5() = vec.val5();
+            conv.val6() = vec.val6();
+            conv.val7() = vec.val7();
+            conv.val8() = vec.val8();
 
+            return conv;
+        }
+
+
+        static Vector8r toVector8r(const simple_flight::Axis8r& vec)
+        {
+            Vector8r conv;
+            conv.val1() = vec.val1();
+            conv.val2() = vec.val2();
+            conv.val3() = vec.val3();
+            conv.val4() = vec.val4();
+            conv.val5() = vec.val5();
+            conv.val6() = vec.val6();
+            conv.val7() = vec.val7();
+            conv.val8() = vec.val8();
+            return conv;
+        }
 
 
 

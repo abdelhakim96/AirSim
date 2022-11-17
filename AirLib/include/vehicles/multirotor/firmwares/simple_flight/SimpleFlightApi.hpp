@@ -203,10 +203,10 @@ namespace airlib
             //Utils::log(Utils::stringf("commandMotorPWMs %f, %f, %f, %f", front_right_pwm, rear_left_pwm, front_left_pwm, rear_right_pwm));
 
             typedef simple_flight::GoalModeType GoalModeType;
-            simple_flight::GoalMode mode(GoalModeType::Passthrough, GoalModeType::Passthrough, GoalModeType::Passthrough, GoalModeType::Passthrough);
+            simple_flight::GoalMode_1 mode(GoalModeType::Passthrough, GoalModeType::Passthrough, GoalModeType::Passthrough, GoalModeType::Passthrough,GoalModeType::Passthrough, GoalModeType::Passthrough, GoalModeType::Passthrough, GoalModeType::Passthrough);
  
-            //simple_flight::Axis4r goal(float vert_front_right, float vert_rear_left, float vert_front_left, float vert_rear_right, float horiz_front_right, float horiz_rear_left, float horiz_front_left, float horiz_rear_right);
-            simple_flight::Axis4r goal(vert_front_right, vert_rear_left, vert_front_left, vert_rear_right);
+            simple_flight::Axis8r goal(float vert_front_right, float vert_rear_left, float vert_front_left, float vert_rear_right, float horiz_front_right, float horiz_rear_left, float horiz_front_left, float horiz_rear_right);
+            //simple_flight::Axis4r goal(vert_front_right, vert_rear_left, vert_front_left, vert_rear_right);
             std::string message;
             firmware_->offboardApi().setGoalAndMode(&goal, &mode, message);
         }
