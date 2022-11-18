@@ -16,16 +16,16 @@ public:
     {
     }
 
-    void getMotorOutput(const Axis4r& controls, std::vector<float>& motor_outputs) const
+    void getMotorOutput(const Axis8r& controls, std::vector<float>& motor_outputs) const
     {
-        if (controls.throttle() < params_->motor.min_angling_throttle) {
-            motor_outputs.assign(params_->motor.motor_count, controls.throttle());
+        if (controls.val4() < params_->motor.min_angling_throttle) {
+            motor_outputs.assign(params_->motor.motor_count, controls.val4());
             return;
         }
 
         for (int motor_index = 0; motor_index < kMotorCount; ++motor_index) {
             motor_outputs[motor_index] =
-                controls.throttle() * mixerQuadX[motor_index].throttle + controls.pitch() * mixerQuadX[motor_index].pitch + controls.roll() * mixerQuadX[motor_index].roll + controls.yaw() * mixerQuadX[motor_index].yaw;
+                controls.val4() * mixerQuadX[motor_index].throttle + controls.pitch() * mixerQuadX[motor_index].pitch + controls.roll() * mixerQuadX[motor_index].roll + controls.yaw() * mixerQuadX[motor_index].yaw;
         }
 
         float min_motor = *std::min_element(motor_outputs.begin(), motor_outputs.begin() + kMotorCount);
