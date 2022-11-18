@@ -36,7 +36,7 @@ namespace airlib
     typedef VectorMath::Vector3f Vector3r;
     typedef VectorMath::Vector2f Vector2r;
     typedef VectorMath::Vector1f Vector1r;
-    typedef VectorMath::Vector8f Vector8r;
+    typedef VectorMath::Vector8f Vector8f;
     typedef VectorMath::Array3f Array3r;
     typedef VectorMath::Pose Pose;
     typedef VectorMath::Quaternionf Quaternionr;
@@ -75,6 +75,12 @@ namespace airlib
     {
         return os << vec.x() << "\t" << vec.y() << "\t" << vec.z() << "\t";
     }
+
+
+    //inline std::ostream& operator<<(std::ostream& os, Vector8r const& vec)
+   // {
+   //     return os << vec.val1() << "\t" << vec.val2() << "\t" << vec.val3() << "\t"<< vec.val4() << "\t"<< vec.val5() << "\t"<< vec.val6() << "\t"<< vec.val7() << "\t"<< vec.val8() << "\t";
+   // }
 }
 } //namespace
 #endif

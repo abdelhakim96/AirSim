@@ -30,6 +30,7 @@ namespace airlib
         typedef Eigen::Matrix<float, 2, 1, Eigen::DontAlign> Vector2f;
         typedef Eigen::Matrix<float, 8, 1, Eigen::DontAlign> Vector8f; //define 8D vector
         typedef Eigen::Matrix<double, 4, 1, Eigen::DontAlign> Vector2d;
+
         typedef Eigen::Vector3f Vector3f;
         typedef Eigen::Vector3d Vector3d;
         typedef Eigen::Array3f Array3f;
@@ -38,6 +39,8 @@ namespace airlib
         typedef Eigen::Quaternion<double, Eigen::DontAlign> Quaterniond;
         typedef Eigen::Matrix<double, 3, 3> Matrix3x3d;
         typedef Eigen::Matrix<float, 3, 3> Matrix3x3f;
+
+        
         typedef Eigen::AngleAxisd AngleAxisd;
         typedef Eigen::AngleAxisf AngleAxisf;
 

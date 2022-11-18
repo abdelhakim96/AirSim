@@ -68,6 +68,11 @@ public:
         return goal_;
     }
 
+    virtual const Axis8r& getGoalValue1() const override
+   {
+       return goal1_;
+    }
+
     virtual const GoalMode& getGoalMode() const override
     {
         return goal_mode_;
@@ -126,6 +131,36 @@ public:
             return false;
         }
     }
+
+    virtual bool setGoalAndMode1(const Axis8r* goal, const GoalMode* goal_mode, std::string& message) override
+    {
+        if (has_api_control_) {
+            if (goal != nullptr)
+                goal1_ = *goal;
+            if (goal_mode != nullptr)
+                goal_mode_ = *goal_mode;
+            goal_timestamp_ = clock_->millis();
+            is_api_timedout_ = false;
+            return true;
+        }
+        else {
+            message = "requestApiControl() must be called before using API control";
+            comm_link_->log(message, ICommLink::kLogLevelError);
+            return false;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     virtual bool arm(std::string& message) override
     {
@@ -264,6 +299,7 @@ private:
     VehicleState vehicle_state_;
 
     Axis4r goal_;
+    Axis8r goal1_;
     GoalMode goal_mode_;
     uint64_t goal_timestamp_;
 

@@ -56,7 +56,7 @@ public:
         offboard_api_.update();
         controller_->update();
 
-        const Axis4r& output_controls = controller_->getOutput();
+        const Axis8r& output_controls = controller_->getOutput();
 
         // if last goal mode is passthrough for all axes (which means moveByMotorPWMs was called),
         // we directly set the motor outputs to controller outputs

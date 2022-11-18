@@ -204,11 +204,13 @@ namespace airlib
 
             typedef simple_flight::GoalModeType GoalModeType;
             simple_flight::GoalMode_1 mode(GoalModeType::Passthrough, GoalModeType::Passthrough, GoalModeType::Passthrough, GoalModeType::Passthrough,GoalModeType::Passthrough, GoalModeType::Passthrough, GoalModeType::Passthrough, GoalModeType::Passthrough);
- 
+             
+             
+
             simple_flight::Axis8r goal(float vert_front_right, float vert_rear_left, float vert_front_left, float vert_rear_right, float horiz_front_right, float horiz_rear_left, float horiz_front_left, float horiz_rear_right);
             //simple_flight::Axis4r goal(vert_front_right, vert_rear_left, vert_front_left, vert_rear_right);
             std::string message;
-            firmware_->offboardApi().setGoalAndMode(&goal, &mode, message);
+            firmware_->offboardApi().setGoalAndMode1(&goal, &mode, message);
         }
 
         virtual void commandRollPitchYawZ(float roll, float pitch, float yaw, float z) override

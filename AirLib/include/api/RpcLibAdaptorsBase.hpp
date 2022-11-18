@@ -81,6 +81,50 @@ namespace airlib_rpclib
             }
         };
 
+
+
+     /*
+        struct Vector8r
+        {
+            msr::airlib::real_T val1_val = 0, val2_val = 0, val3_val = 0,val4_val = 0, val5_val = 0, val6_val = 0,val7_val = 0, val8_val = 0;
+            MSGPACK_DEFINE_MAP(val1_val, val2_val, val3_val, val4_val, val5_val, val6_val,val7_val, val8_val);
+
+            Vector8r()
+            {
+            }
+
+            Vector8r(const msr::airlib::Vector3r& s)
+            {
+                val1_val = s.x();
+                val2_val = s.y();
+                val3_val = s.z();
+                val4_val = s.x();
+                val5_val = s.y();
+                val6_val = s.z();
+                val7_val = s.y();
+                val8_val = s.z();
+            }
+            msr::airlib::Vector8r to() const
+            {
+                return msr::airlib::Vector8r(val1_val, val2_val, val3_val,val4_val,val5_val,val6_val,val7_val,val8_val);
+            }
+        };
+
+    */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         struct CollisionInfo
         {
             bool has_collided = false;

@@ -25,7 +25,7 @@ namespace airlib
             return conv;
         }
 
-
+  
         static Vector3r toVector3r(const simple_flight::Axis3r& vec)
         {
             Vector3r conv;
@@ -35,38 +35,37 @@ namespace airlib
             return conv;
         }
 
-        static simple_flight::Axis8r toAxis3r(const Vector8f& vec)
+      /*
+        static simple_flight::Axis8r toAxis8r(const Vector8f& vec)
         {
             simple_flight::Axis8r conv;
-            conv.val1() = vec.val1();
-            conv.val2() = vec.val2();
-            conv.val3() = vec.val3();
-            conv.val4() = vec.val4();
-            conv.val5() = vec.val5();
-            conv.val6() = vec.val6();
-            conv.val7() = vec.val7();
-            conv.val8() = vec.val8();
+            conv.val1_val() = vec.val1_val();
+            conv.val2_val() = vec.val2_val();
+            conv.val3_val() = vec.val3_val();
+            conv.val4_val() = vec.val4_val();
+            conv.val5_val() = vec.val5_val();
+            conv.val6_val() = vec.val6_val();
+            conv.val7_val() = vec.val7_val();
+            conv.val8_val() = vec.val8_val();
 
             return conv;
         }
 
 
-        static Vector8r toVector8r(const simple_flight::Axis8r& vec)
+        static Vector8f toVector8f(const simple_flight::Axis8r& vec)
         {
-            Vector8r conv;
-            conv.val1() = vec.val1();
-            conv.val2() = vec.val2();
-            conv.val3() = vec.val3();
-            conv.val4() = vec.val4();
-            conv.val5() = vec.val5();
-            conv.val6() = vec.val6();
-            conv.val7() = vec.val7();
-            conv.val8() = vec.val8();
+            Vector8f conv;
+            conv.val1_val() = vec.val1_val();
+            conv.val2_val() = vec.val2_val();
+            conv.val3_val() = vec.val3_val();
+            conv.val4_val() = vec.val4_val();
+            conv.val5_val() = vec.val5_val();
+            conv.val6_val() = vec.val6_val();
+            conv.val7_val() = vec.val7_val();
+            conv.val8_val() = vec.val8_val();
             return conv;
-        }
-
-
-
+        }   
+  */
         static Kinematics::State toKinematicsState3r(const simple_flight::KinematicsState& state)
         {
             Kinematics::State state3r;

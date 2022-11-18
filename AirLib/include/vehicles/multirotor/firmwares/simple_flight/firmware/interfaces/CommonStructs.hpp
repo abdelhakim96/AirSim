@@ -107,7 +107,7 @@ public:
     {
         return vals_[index];
     }
-
+   /*
     virtual std::string toString() const
     {
         return std::to_string(static_cast<float>(vals_[0]))
@@ -126,6 +126,7 @@ public:
             .append(", ")
             .append(std::to_string(static_cast<float>(vals_[7])));
     }
+    */
 
     bool equals8(const Axis8<T>& other) const
     {
@@ -134,10 +135,10 @@ public:
         && (*this)[4] == other[4] && (*this)[5] == other[5] && (*this)[6] == other[6] && (*this)[7] == other[7] ;
     }
 
-    Axis4<T> colWiseMultiply8(const Axis8<T>& other) const
+    Axis8<T> colWiseMultiply8(const Axis8<T>& other) const
     {
         //return Axis4<T>(vals_[0] * other.vals_[0], vals_[1] * other.vals_[1], vals_[2] * other.vals_[2]);
-        return Axis4<T>((*this)[0] * other[0], (*this)[1] * other[1], (*this)[2] * other[2], (*this)[3] * other[3]
+        return Axis8<T>((*this)[0] * other[0], (*this)[1] * other[1], (*this)[2] * other[2], (*this)[3] * other[3]
                     , (*this)[4] * other[4], (*this)[5] * other[5],   (*this)[6] * other[6], (*this)[7] * other[7])  ;
 
     }
@@ -185,52 +186,6 @@ private:
     T vals_[8];
 };
 typedef Axis8<TReal> Axis8r;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -502,16 +457,13 @@ public:
 class GoalMode_1 : public Axis8<GoalModeType>
 {
 public:
-    GoalMode(GoalModeType val1_val = GoalModeType::Passthrough, GoalModeType val2_val = GoalModeType::Passthrough,
-             GoalModeType val3_val = GoalModeType::Passthrough, GoalModeType val4_val = GoalModeType::Passthrough,
+    GoalMode_1(GoalModeType val1_val = GoalModeType::Passthrough, GoalModeType val2_val = GoalModeType::Passthrough, GoalModeType val3_val = GoalModeType::Passthrough, GoalModeType val4_val = GoalModeType::Passthrough,
              GoalModeType val5_val = GoalModeType::Passthrough, GoalModeType val6_val = GoalModeType::Passthrough,
-             GoalModeType val6_val = GoalModeType::Passthrough, GoalModeType val7_val = GoalModeType::Passthrough, GoalModeType val8_val = GoalModeType::Passthrough)
+             GoalModeType val7_val = GoalModeType::Passthrough, GoalModeType val8_val = GoalModeType::Passthrough)
         : Axis8<GoalModeType>(val1_val, val2_val, val3_val, val4_val, val5_val, val6_val, val7_val, val8_val)
     {
     }
 };
-
-
 
 
 
